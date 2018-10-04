@@ -1,8 +1,10 @@
 Planets[] holey;
 void setup()
 {
+
   size(900, 900);
-  holey = new Planets[130];
+  holey = new Planets[160];
+
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
 }
@@ -12,15 +14,16 @@ void draw()
   for (int i = 0; i < holey.length; i ++)
   {
     holey[i].show();
+    holey[i].distance();
     holey[i].walk();
   }
-  fill(0);
-  ellipse(450, 450, 300, 300);
+      BlackHole Holed = new BlackHole();
+ Holed.show();
 }
 
 class Planets
 {
-  float myX, myY, mySize ;
+  float myX, myY, mySize,dist1 ;
   int myColor;
   Planets()
   {
@@ -32,50 +35,27 @@ class Planets
 
   void walk()
   {
-    if (myX <= 900 && myX >= 700) {
-      myX = myX - 0.3-0.6*(float)Math.random();
+    if (myX <= 450 && dist1 < 300) {
+      myX = myX + 30000/(dist1*dist1);
+    }
+        if (myX > 450 && dist1 < 300) {
+      myX = myX - 30000/(dist1*dist1);
+    }
+    
+        if (dist1 > 200 ){
+    myX = myX + 2*(float)Math.random()-0.99;
+    myY = myY + 2*(float)Math.random()-0.99;
+        }
+
+
+
+
+    if (myY <= 450 && dist1 < 300) {
+      myY = myY + (30000/(dist1*dist1));
     }
 
-    if (myX <= 700 && myX >= 500) {
-      myX = myX - 0.4 -0.6*(float)Math.random();
-    }
-
-    if (myX <= 200 && myX >= 0) {
-      myX = myX + 0.3+0.6*(float)Math.random();
-    }
-
-    if (myX <= 400 && myX >= 200) {
-      myX = myX + 0.4 +0.6*(float)Math.random();
-    }
-
-
-    if (myX <= 500 && myX >= 400) {
-      myX = myX + (int)(Math.random()*8-4);
-    }
-
-
-
-
-    if (myY <= 900 && myY >= 700) {
-      myY = myY - 0.3-0.6*(float)Math.random();
-    }
-
-    if (myY <= 700 && myY >= 500) {
-      myY = myY - 0.4 -0.6*(float)Math.random();
-    }
-
-
-    if (myY <= 200 && myY >= 0) {
-      myY = myY + 0.3+0.6*(float)Math.random();
-    }
-
-
-    if (myY <= 400 && myY >= 200) {
-      myY = myY + 0.4 +0.6*(float)Math.random();
-    }
-
-    if (myY <= 500 && myY>= 400) {
-      myY = myY + (int)(Math.random()*8-4);
+    if (myY > 450 && dist1 < 300) {
+      myY = myY - 30000/(dist1*dist1);
     }
   }
   void show()
@@ -83,4 +63,21 @@ class Planets
     fill(myColor);
     ellipse(myX, myY, mySize, mySize);
   }
+  void distance(){
+dist1 = dist(myX,myY,450,450);
+System.out.println(dist1);
+}
+}
+
+class BlackHole
+{
+  float radius;
+  BlackHole()
+  {
+    radius = 100;
+  }
+  void show(){
+    fill(0);
+    ellipse(450,450,radius*2,radius*2);
+}
 }
