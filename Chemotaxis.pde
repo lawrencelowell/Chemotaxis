@@ -3,7 +3,7 @@ void setup()
 {
 
   size(900, 900);
-  holey = new Planets[160];
+  holey = new Planets[100];
 
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
@@ -11,6 +11,8 @@ void setup()
 void draw()
 {
   background(30);
+  fill(255,255,255,10);
+  ellipse(450,450,600,600);
   for (int i = 0; i < holey.length; i ++)
   {
     holey[i].show();
@@ -23,7 +25,7 @@ void draw()
 
 class Planets
 {
-  float myX, myY, mySize,dist1 ;
+  float myX, myY, mySize,distR,distX,distY ;
   int myColor;
   Planets()
   {
@@ -35,14 +37,14 @@ class Planets
 
   void walk()
   {
-    if (myX <= 450 && dist1 < 300) {
-      myX = myX + 30000/(dist1*dist1);
+    if (myX <= 450 && distR < 300) {
+      myX = myX + 100/(distX+1);
     }
-        if (myX > 450 && dist1 < 300) {
-      myX = myX - 30000/(dist1*dist1);
+        if (myX > 450 && distR < 300) {
+      myX = myX - 100/(distX+1);
     }
     
-        if (dist1 > 200 ){
+        if (distR > 300 ){
     myX = myX + 2*(float)Math.random()-0.99;
     myY = myY + 2*(float)Math.random()-0.99;
         }
@@ -50,12 +52,12 @@ class Planets
 
 
 
-    if (myY <= 450 && dist1 < 300) {
-      myY = myY + (30000/(dist1*dist1));
+    if (myY <= 450 && distR < 301) {
+      myY = myY + 100/(distY+1);
     }
 
-    if (myY > 450 && dist1 < 300) {
-      myY = myY - 30000/(dist1*dist1);
+    if (myY > 450 && distR < 301) {
+      myY = myY - 100/(distY+1);
     }
   }
   void show()
@@ -64,8 +66,11 @@ class Planets
     ellipse(myX, myY, mySize, mySize);
   }
   void distance(){
-dist1 = dist(myX,myY,450,450);
-System.out.println(dist1);
+distR = dist(myX,myY,450,450);
+distX = dist(myX,450,myX,myY);
+distY = dist(450,myY,myX,myY);
+
+System.out.println(distR);
 }
 }
 
