@@ -1,4 +1,6 @@
-Planets[] holey;
+Planets[] holey,holey1;
+BlackHole Holed = new BlackHole();
+int radius = 100;
 void setup()
 {
 
@@ -7,20 +9,20 @@ void setup()
 
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
+    
 }
 void draw()
 {
   background(30);
-  fill(255,255,255,10);
-  ellipse(450,450,600,600);
   for (int i = 0; i < holey.length; i ++)
   {
     holey[i].show();
     holey[i].distance();
     holey[i].walk();
   }
-      BlackHole Holed = new BlackHole();
- Holed.show();
+
+Holed.show();
+Holed.field();
 }
 
 class Planets
@@ -37,14 +39,20 @@ class Planets
 
   void walk()
   {
-    if (myX <= 450 && distR < 300) {
-      myX = myX + 100/(distX+1);
+    if (myX <= 450 && distR < radius*2 && distR > radius*1.2) {
+      myX = myX + radius/(2.5*(distX+1));
     }
-        if (myX > 450 && distR < 300) {
-      myX = myX - 100/(distX+1);
+        if (myX > 450 && distR < radius*2 && distR > radius*1.2) {
+      myX = myX - radius/(2.5*(distX+1));
+    }
+        if (myX <= 450 && distR < radius*1.2) {
+      myX = myX + radius/(1.5*(distX+1));
+    }
+        if (myX > 450 && distR < radius*1.2) {
+      myX = myX - radius/(1.5*(distX+1));
     }
     
-        if (distR > 300 ){
+        if (distR > radius*2 ){
     myX = myX + 2*(float)Math.random()-0.99;
     myY = myY + 2*(float)Math.random()-0.99;
         }
@@ -52,14 +60,22 @@ class Planets
 
 
 
-    if (myY <= 450 && distR < 301) {
-      myY = myY + 100/(distY+1);
+    if (myY <= 450 && distR < radius*2 && distR > radius*1.2) {
+      myY = myY + radius/(2.5*(distY+1));
     }
 
-    if (myY > 450 && distR < 301) {
-      myY = myY - 100/(distY+1);
+    if (myY > 450 && distR <= radius*2 && distR > radius*1.2) {
+      myY = myY - radius/(2.5*(distY+1));
+    }
+        if (myY <= 450 && distR <= radius*1.2) {
+      myY = myY + radius/(1.5*(distY+1));
+    }
+
+    if (myY > 450 && distR <= radius*1.2) {
+      myY = myY - radius/(1.5*(distY+1));
     }
   }
+
   void show()
   {
     fill(myColor);
@@ -76,13 +92,20 @@ System.out.println(distR);
 
 class BlackHole
 {
-  float radius;
   BlackHole()
   {
     radius = 100;
   }
   void show(){
     fill(0);
-    ellipse(450,450,radius*2,radius*2);
+    ellipse(450,450,radius,radius);
+}
+void field(){
+  fill(30,30,30,120);
+  ellipse(450,450,radius*4,radius*4);
 }
 }
+void mousePressed(){
+  if (radius < 250){
+  radius = radius + 5;
+}}
