@@ -86,7 +86,6 @@ distR = dist(myX,myY,450,450);
 distX = dist(myX,450,myX,myY);
 distY = dist(450,myY,myX,myY);
 
-System.out.println(distR);
 }
 }
 
