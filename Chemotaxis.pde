@@ -1,6 +1,7 @@
 Planets[] holey,holey1;
 BlackHole Holed = new BlackHole();
 int radius = 100;
+s = 0;
 void setup()
 {
 
@@ -9,20 +10,21 @@ void setup()
 
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
-    
+
 }
 void draw()
 {
-  background(30);
+      background(30);
   for (int i = 0; i < holey.length; i ++)
   {
+
     holey[i].show();
     holey[i].distance();
     holey[i].walk();
   }
 
 Holed.show();
-Holed.field();
+
 }
 
 class Planets
@@ -34,7 +36,7 @@ class Planets
     myX = (int)random(width);
     myY = (int)random(width);
     myColor = color((int)(Math.random()*105+100));
-    mySize = 3+(int)(Math.random()*17);
+    mySize = 3+(int)(Math.random()*25);
   }
 
   void walk()
@@ -46,10 +48,10 @@ class Planets
       myX = myX - radius/(2.5*(distX+1));
     }
         if (myX <= 450 && distR < radius*1.2) {
-      myX = myX + radius/(1.5*(distX+1));
+      myX = myX + radius/(2*(distX+1));
     }
         if (myX > 450 && distR < radius*1.2) {
-      myX = myX - radius/(1.5*(distX+1));
+      myX = myX - radius/(2*(distX+1));
     }
     
         if (distR > radius*2 ){
@@ -68,11 +70,11 @@ class Planets
       myY = myY - radius/(2.5*(distY+1));
     }
         if (myY <= 450 && distR <= radius*1.2) {
-      myY = myY + radius/(1.5*(distY+1));
+      myY = myY + radius/(2*(distY+1));
     }
 
     if (myY > 450 && distR <= radius*1.2) {
-      myY = myY - radius/(1.5*(distY+1));
+      myY = myY - radius/(2*(distY+1));
     }
   }
 
@@ -104,7 +106,9 @@ void field(){
   ellipse(450,450,radius*4,radius*4);
 }
 }
-void mousePressed(){
-  if (radius < 250){
-  radius = radius + 5;
-}}
+void mouseDragged(){
+  if (radius < 300)
+  radius = radius + 1;
+}
+
+
