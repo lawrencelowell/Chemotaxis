@@ -18,23 +18,21 @@ void setup()
   for (int i=0; i < ast.length; i++)
     ast[i] = new dong();
 }
-}
+
 void draw()
 {
   background(30);
 
 
-  for (int i = 0; i < holey.length; i ++)
+  for (int k = 0; k < holey.length; k ++)
   {
-
-    holey[i].show();
-    holey[i].vibrate();
+    holey[k].show();
   }
+ 
 
   if (S == 1) {
     for (int i = 0; i < holey.length; i ++)
     {
-
       holey[i].distance();
       holey[i].walk();
     }
@@ -104,7 +102,7 @@ void vibrate()
       myX = myX + 2*(float)Math.random()-0.99;
       myY = myY + 2*(float)Math.random()-0.99;
     }
-    
+}
   void walk()
   {
     if (myX <= 450 && distR < radius*2 && distR > radius*1.2) {
