@@ -3,12 +3,12 @@ BlackHole Holed = new BlackHole();
 dong[] ast;
 int radius = 100;
 int S = 0;
+int count = 0;
 void setup()
 {
-frameRate(50);
   size(900, 900);
-  holey = new Planets[300];
-  ast = new dong[3];
+  holey = new Planets[(int)(Math.random()*555)+200];
+  ast = new dong[(int)(Math.random()*10)+1];
 
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
@@ -59,6 +59,16 @@ void draw()
     fill(255);
     text ("Click to start program", 200, 100);
   }
+  
+    if (radius > 300) {
+    textSize(50);
+    fill(255);
+    text ("Yay, try again", 308, 120);
+  }
+  System.out.println(count);
+     textSize(50);
+    fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+    text ("Radius " + radius, 308, 800);
 }
 
 class Planets
@@ -115,8 +125,10 @@ class Planets
     if (distR <= radius*0.515)
       myX = myY = 450;
 
-    if (distR <= radius*0.515 && distR >= radius *0.5)
+    if (distR <= radius*0.515 && distR >= radius *0.5){
       radius = radius + (int)(135*log(mySize+2.7)/radius);
+      count = count + 1;
+    }
   }
   void show()
   {
@@ -179,8 +191,10 @@ class dong
   }
   void walk() {
 
-    if (AR <= radius*0.515 && AR >= radius *0.5)
+    if (AR <= radius*0.515 && AR >= radius *0.5){
       radius = radius + (int)(90*Asteroid/radius);
+      count = count +1;}
+     
 
 
 
