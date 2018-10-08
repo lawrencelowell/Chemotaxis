@@ -4,8 +4,8 @@ dong[] ast;
 int radius = 100;
 int S = 0;
 int count = 0;
-int blue = (int)(Math.random()*20)+1;
-int gray = (int)(Math.random()*1000)+200;
+int blue = (int)(Math.random()*10)+1;
+int gray = (int)(Math.random()*500)+200;
 void setup()
 {
   size(900, 900);
