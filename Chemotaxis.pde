@@ -200,5 +200,10 @@ class dong
     if (AY > 450 && AR <= radius*2.4 ) {
       AY = AY - (radius*radius*0.005)/(4*(ADY));
     }
+    
+    if (AR <= radius*0.515){
+      AX = 450;
+      AY = 450;
+}
   }
 }
