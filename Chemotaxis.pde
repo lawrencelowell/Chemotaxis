@@ -18,12 +18,6 @@ void setup()
   for (int i=0; i < ast.length; i++)
     ast[i] = new dong();
 }
-void vibrate()
-{
-    if (distR > radius*2 ) {
-      myX = myX + 2*(float)Math.random()-0.99;
-      myY = myY + 2*(float)Math.random()-0.99;
-    }
 }
 void draw()
 {
@@ -34,6 +28,7 @@ void draw()
   {
 
     holey[i].show();
+    holey[i].vibrate();
   }
 
   if (S == 1) {
@@ -103,7 +98,13 @@ class Planets
     myCA =(int)(Math.random()*35+100);
     b =(int)(Math.random()*80+150);
   }
-
+void vibrate()
+{
+    if (distR > radius*2 ) {
+      myX = myX + 2*(float)Math.random()-0.99;
+      myY = myY + 2*(float)Math.random()-0.99;
+    }
+    
   void walk()
   {
     if (myX <= 450 && distR < radius*2 && distR > radius*1.2) {
