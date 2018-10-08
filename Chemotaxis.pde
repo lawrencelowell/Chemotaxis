@@ -1,7 +1,7 @@
 Planets[] holey;
 BlackHole Holed = new BlackHole();
 dong[] ast;
-int radius = 100;
+int radius = (int)(Math.random()*100)+50;;
 int S = 0;
 int count = 0;
 int blue = (int)(Math.random()*10)+1;
