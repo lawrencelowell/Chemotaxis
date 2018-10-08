@@ -27,6 +27,7 @@ void draw()
   for (int k = 0; k < holey.length; k ++)
   {
     holey[k].show();
+    holey[k].vibrate();
   }
  
 
@@ -65,17 +66,26 @@ void draw()
     if (radius > 300) {
     textSize(50);
     fill(255);
+    if (radius > 400)
+    fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     text ("Yay, try again", 308, 120);
   }
      textSize(50);
+     fill(255);
+     if (radius > 300)
     fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     text ("Radius " + radius, 308, 800);
     
     
        textSize(30);
     fill(150,150,150);
+        if (radius > 250)
+    fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     text ("Grays " + gray, 40, 400);
+  
         fill(100,100,250);
+             if (radius > 250)
+    fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     text ("Blues " + blue, 40, 500);
 }
 
@@ -136,7 +146,7 @@ void vibrate()
       myX = myY = 450;
 
     if (distR <= radius*0.515 && distR >= radius *0.5){
-      radius = radius + (int)(135*log(mySize+2.7)/radius);
+      radius = radius + (int)(155*log(mySize+2.7)/radius);
       count = count + 1;
     }
   }
@@ -163,6 +173,8 @@ class BlackHole
   }
   void show() {
     fill(0);
+        if (radius > 470)
+    fill((int)(Math.random()*125),(int)(Math.random()*125),(int)(Math.random()*125));
     ellipse(450, 450, radius, radius);
   }
   void field() {
