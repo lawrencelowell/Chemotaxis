@@ -4,11 +4,13 @@ dong[] ast;
 int radius = 100;
 int S = 0;
 int count = 0;
+int blue = (int)(Math.random()*20)+1;
+int gray = (int)(Math.random()*1000)+200;
 void setup()
 {
   size(900, 900);
-  holey = new Planets[(int)(Math.random()*555)+200];
-  ast = new dong[(int)(Math.random()*10)+1];
+  holey = new Planets[gray];
+  ast = new dong[blue];
 
   for (int i=0; i < holey.length; i++)
     holey[i] = new Planets();
@@ -65,11 +67,18 @@ void draw()
     fill(255);
     text ("Yay, try again", 308, 120);
   }
-  System.out.println(count);
      textSize(50);
     fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     text ("Radius " + radius, 308, 800);
+    
+    
+       textSize(30);
+    fill(150,150,150);
+    text ("Grays " + gray, 40, 400);
+        fill(100,100,250);
+    text ("Blues " + blue, 40, 500);
 }
+
 
 class Planets
 {
