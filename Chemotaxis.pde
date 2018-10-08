@@ -146,7 +146,7 @@ void vibrate()
       myX = myY = 450;
 
     if (distR <= radius*0.515 && distR >= radius *0.5){
-      radius = radius + (int)(155*log(mySize+2.7)/radius);
+      radius = radius + (int)(145*log(mySize+2.7)/radius);
       count = count + 1;
     }
   }
