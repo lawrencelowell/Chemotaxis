@@ -18,6 +18,13 @@ void setup()
   for (int i=0; i < ast.length; i++)
     ast[i] = new dong();
 }
+void vibrate()
+{
+    if (distR > radius*2 ) {
+      myX = myX + 2*(float)Math.random()-0.99;
+      myY = myY + 2*(float)Math.random()-0.99;
+    }
+}
 void draw()
 {
   background(30);
@@ -110,11 +117,6 @@ class Planets
     }
     if (myX > 450 && distR < radius*1.2) {
       myX = myX - (radius*radius*0.005)/(1.7*(distX));
-    }
-
-    if (distR > radius*2 ) {
-      myX = myX + 2*(float)Math.random()-0.99;
-      myY = myY + 2*(float)Math.random()-0.99;
     }
 
     if (myY <= 450 && distR < radius*2 && distR > radius*1.2) {
