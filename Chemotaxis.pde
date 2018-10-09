@@ -173,7 +173,7 @@ class BlackHole
   }
   void show() {
     fill(0);
-        if (radius > 470)
+        if (radius > 499)
     fill((int)(Math.random()*125),(int)(Math.random()*125),(int)(Math.random()*125));
     ellipse(450, 450, radius, radius);
   }
