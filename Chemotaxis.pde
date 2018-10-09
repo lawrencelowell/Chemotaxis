@@ -55,7 +55,7 @@ void draw()
   }
 
   Holed.show();
-
+  Holed.field();
 
   if (S == 0) {
     textSize(50);
